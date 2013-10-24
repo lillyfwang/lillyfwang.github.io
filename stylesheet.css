@@ -1,0 +1,18 @@
+img{
+	height: 200px;
+}
+
+div{
+	margin-top: -10px;
+	margin-right: -10px;
+	margin-left: -10px;
+}
+
+table{
+	font-family: Gill Sans;
+	font-size: 15px;
+}
+
+span{
+	color: gray;
+}

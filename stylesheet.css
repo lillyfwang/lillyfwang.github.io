@@ -1,5 +1,29 @@
+/* This is to set the default brower settings to zero,
+makes it a blank slate */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
 body{
 	background-color:#FFFCF5;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
 }
 
 div{
@@ -9,6 +33,12 @@ div{
 	text-align: center;
 	color: white;
 	opacity: .4;
+}
+
+.outside:hover{
+	border:dotted 2px #FFFFFF;
+	opacity: .6;
+	z-index: 10;
 }
 
 img{
@@ -21,35 +51,14 @@ img{
 	border: double 3px #2E2511;
 }
 
+img:hover{
+	opacity: 1;
+	border: solid 3px #423B28;
+}
+
 span{
 	font-size: 15px;
 	text-transform: capitalize;
-}
-
-.leftright p{
-	position: fixed;
-	top:50%;
-	padding-left: 1%;
-}
-
-.inner{
-	background-color: #FFFCF5;
-}
-
-#github p{
-	padding-top:1%;
-}
-
-#about p{
-	padding-top: 2%;
-}
-
-#contact p{
-	padding-left: 5%;
-}
-
-#resume p{
-	padding-left: 1%;
 }
 
 #name{
@@ -57,8 +66,8 @@ span{
 	font-family: Minion;
 	text-align: center;
 	color: #2E2511;
-	position: fixed;
-	top: 35%;
+	position: absolute;
+	top: 37%;
 	left: 46%;
 	height: 100px;
 	width:300px;
@@ -66,74 +75,107 @@ span{
 	opacity: 1;
 }
 
+.inside{
+	display: block;
+	position: absolute;
+	background-color: #FFFCF5;
+	opacity: .85;
+	height: 100%;
+	width: 100%;
+}
+
+#name:hover{
+	color: #423B28;
+}
+
+/* ABOUT SECTION CSS CODE */
 #about{
 	display: block;
-	position: relative;
+	position: absolute;
 	background-color: rgb(0, 126, 237);
 	width: 100%;
-	height:22%;
-	position: fixed;
-	top: 0px;
-	left: 0px;
+	height:100%;
+	bottom:78%;
 	z-index: 1;
 }
 
-#about-inner{
-	opacity: 0;
-	margin-top: 5%;
-	width: 100%;
-	height: 95%;
+#about p{
+	display: block;
+	position: absolute;
+	bottom: 7%;
+	left: 50%;
 }
 
+#about-inside{
+	bottom: 22%;
+	z-index: 5;
+}
+
+/* CONTACT SECTION CSS CODE */
 #contact{
-	background-color: rgb(0, 198, 237);
-	width: 28%;
-	height:100%;
+	display: block;
 	position: absolute;
-	top: 0px;
-	left: 0px;
+	background-color: rgb(0, 198, 237);
+	width: 100%;
+	height:100%;
+	right: 72%;
 	z-index: 2;
 }
 
-#contact-inner{
+#contact p{
+	display: block;
 	position: absolute;
-	opacity: 0;
-	left:-5px;
-	top: -5px;
-	width: 69%;
-	height:50%;
+	right: 10%;
+	top: 50%;
 }
 
+#contact-inside{
+	right:28%;
+	z-index: 6;
+}
+
+/* GITHUB SECTION CSS CODE */
 #github{
+	display: block;
+	position: absolute;
 	background-color: rgb(0, 237, 158);
 	width: 100%;
-	height:16%;
-	position: fixed;
-	bottom: 0px;
-	left: 0px;
+	height: 100%;
+	top: 84%;
 	z-index: 3;
 }
 
-#github-inner{
-	opacity: 0;
-	margin-top: 8%;
-	width: 100%;
-	height: 95%;
+#github p{
+	display: block;
+	position: absolute;
+	top: 5%;
+	left: 50%;
 }
 
+#github-inside{
+	top:16%;
+	z-index: 7;
+}
+
+/* RESUME SECTION CSS CODE */
 #resume{
+	display: block;
+	position: absolute;
 	background-color: rgb(0, 237, 237);
-	width: 9%;
+	width: 100%;
 	height:100%;
-	position: fixed;
-	top: 0px;
-	right: 0px;
+	left: 91%;
 	z-index: 4;
 }
 
-#resume-inner{
-	opacity: 0;
-	margin-right: -100%;
-	width: 100%;
-	height: 350px;
+#resume p{
+	display: block;
+	position: absolute;
+	left: 1%;
+	top: 50%;
+}
+
+#resume-inside{
+	left:9%;
+	z-index: 8;
 }

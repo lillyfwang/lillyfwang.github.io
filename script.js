@@ -1,113 +1,63 @@
 $(document).ready(function() {
 
-	//These effects are for the homepage (hovering over divs)
-
-		$('.updown').hover(
-		function()
+	//ABOUT PAGE TOGGLE
+	var aboutOpen=false;
+	$('#about').click(function(){
+		aboutOpen=!aboutOpen;
+		if (aboutOpen) {
+			$(this).animate({bottom: "0%", opacity: 1}, 800);
+			$(this).css("z-index", "10");
+		}
+		else
 		{
-			$(this).animate({height: "+=15px"});
-			$(this).css("border", "dotted 2px #FFFFFF");
-		},
-		function()
-		{
-			$(this).animate({height: "-=15px"});
-			$(this).css("border", "none");
-		});
-
-	$('.leftright').hover(
-		function()
-		{
-			$(this).animate({width: "+=15px"});
-			$(this).css("border", "dotted 2px #FFFFFF");
-		},
-		function()
-		{
-			$(this).animate({width: "-=15px"});
-			$(this).css("border", "none");
-		});
-	
-	$('#name').hover(
-		function()
-		{
-			$(this).css("color", "#423B28");
-			$('img').css("opacity", "1");
-			$('img').css("border", "solid 3px #423B28");
-		},
-		function()
-		{
-			$(this).css("color", "#2E2511");
-			$('img').css("opacity", ".9");
-			$('img').css("border", "double 3px #2E2511");
-		});
-
-	//Slide Events
-	$('#github p').click(
-		function(){
-			$(this).slideUp('slow');
-			$('#github').animate({height: "+=84%"}, 700);
-			$('#github').css("opacity", "1");
-			$('#github').css("z-index", "100");
-			$('#github-inner').css("opacity", "1");
-		});
-
-	$('#github-inner').click(
-		function(){
-			$('#github p').slideDown('slow');
-			$('#github').animate({height: "-=84%"}, 700);
-			$('#github').css("opacity", ".3");
-			$('#github').css("z-index", "3");
-			$('#github-inner').css("opacity", "1");
-		});
-
-	$('#about p').click(
-		function(){
-			$('#about p').slideUp('slow');
-			$('#about').animate({height: "+=78%"}, 700);
-			$('#about').css("opacity", "1");
-			$('#about').css("z-index", "100");
-			$('#about-inner').css("opacity", "1");
-		});
-
-	$('#about-inner').click(
-		function(){
-			$('#about p').slideDown('slow');
-			$('#about').animate({height: "-=78%"}, 700);
-			$('#about').css("opacity", ".3");
+			$('#about').animate({bottom: "78%",opacity: .3}, 800);
 			$('#about').css("z-index", "1");
-			$('#about-inner').css("opacity", "0");
-		});
+		}
+	});
 
-	$('#resume p').click(
-		function(){
-			$('#resume').animate({width: "+=100%"}, 700);
-			$('#resume').css("opacity", "1");
-			$('#resume').css("z-index", "100");
-			$('#resume-inner').css("opacity", "1");
-		});
-
-	$('#resume-inner').click(
-		function(){
-			$('#resume').animate({width: "-=100%"}, 700);
-			$('#resume').css("opacity", ".3");
-			$('#resume').css("z-index", "4");
-			$('#resume-inner').css("opacity", "0");
-		});
-
-	$('#contact p').click(
-		function(){
-			$('#contact').animate({width: "+=100%"}, 700);
-			$('#contact p').animate({width: "+=200%"}, 700);
-			$('#contact').css("opacity", "1");
-			$('#contact').css("z-index", "100");
-			$('#contact-inner').css("opacity", "1");
-		});
-
-	$('#contact-inner').click(
-		function(){
-			$('#contact').animate({width: "-=100%"}, 800);
-			$('#contact p').animate({width: "-=199%"}, 800);
-			$('#contact').css("opacity", ".3");
+	//CONTACT PAGE TOGGLE
+	var contactOpen=false;
+	$('#contact').click(function(){
+		contactOpen=!contactOpen;
+		if (contactOpen) {
+			$(this).animate({right: "0%", opacity: 1}, 800);
+			$(this).css("z-index", "10");
+		}
+		else
+		{
+			$('#contact').animate({right: "72%",opacity: .3}, 800);
 			$('#contact').css("z-index", "2");
-			$('#contact-inner').css("opacity", "0");
-		});
+		}
+	});
+
+	//GITHUB PAGE TOGGLE
+	var ghOpen=false;
+	$('#github').click(function(){
+		ghOpen=!ghOpen;
+		if (ghOpen) {
+			$(this).animate({top: "0%", opacity: 1}, 800);
+			$(this).css("z-index", "10");
+		}
+		else
+		{
+			$('#github').animate({top: "84%",opacity: .3}, 800);
+			$('#github').css("z-index", "3");
+		}
+	});
+
+	//RESUME PAGE TOGGLE
+	var resumeOpen=false;
+	$('#resume').click(function(){
+		resumeOpen=!resumeOpen;
+		if (resumeOpen) {
+			$(this).animate({left: "0%", opacity: 1}, 800);
+			$(this).css("z-index", "10");
+		}
+		else
+		{
+			$('#resume').animate({left: "91%",opacity: .3}, 800);
+			$('#resume').css("z-index", "4");
+		}
+	});
+
 });

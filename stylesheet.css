@@ -36,9 +36,8 @@ div{
 }
 
 .outside:hover{
-	border:dotted 2px #FFFFFF;
+	border:dotted 2px #000000;
 	opacity: .6;
-	z-index: 10;
 }
 
 img{
@@ -78,10 +77,12 @@ span{
 .inside{
 	display: block;
 	position: absolute;
-	background-color: #FFFCF5;
-	opacity: .85;
+	opacity: .4;
 	height: 100%;
 	width: 100%;
+	color: black;
+	font-family: Garamond;
+	font-size: 20px;
 }
 
 #name:hover{
@@ -103,10 +104,12 @@ span{
 	display: block;
 	position: absolute;
 	bottom: 7%;
-	left: 50%;
+	/*ISSUE: MUST FIND WAY TO CENTER TEXT*/
+	left: 47.5%;
 }
 
 #about-inside{
+	background-color: rgb(0, 126, 237);
 	bottom: 22%;
 	z-index: 5;
 }
@@ -115,7 +118,7 @@ span{
 #contact{
 	display: block;
 	position: absolute;
-	background-color: rgb(0, 198, 237);
+	background-color: #C68CFF;
 	width: 100%;
 	height:100%;
 	right: 72%;
@@ -126,10 +129,12 @@ span{
 	display: block;
 	position: absolute;
 	right: 10%;
+	/*ISSUE: MUST FIND WAY TO CENTER TEXT*/
 	top: 50%;
 }
 
 #contact-inside{
+	background-color: #C68CFF;
 	right:28%;
 	z-index: 6;
 }
@@ -138,7 +143,7 @@ span{
 #github{
 	display: block;
 	position: absolute;
-	background-color: rgb(0, 237, 158);
+	background-color: rgb(0, 198, 237);
 	width: 100%;
 	height: 100%;
 	top: 84%;
@@ -149,10 +154,12 @@ span{
 	display: block;
 	position: absolute;
 	top: 5%;
-	left: 50%;
+	/*ISSUE: MUST FIND WAY TO CENTER TEXT*/
+	left: 47.5%;
 }
 
 #github-inside{
+	background-color: rgb(0, 198, 237);
 	top:16%;
 	z-index: 7;
 }
@@ -161,10 +168,10 @@ span{
 #resume{
 	display: block;
 	position: absolute;
-	background-color: rgb(0, 237, 237);
+	background-color: #00E384;
 	width: 100%;
 	height:100%;
-	left: 91%;
+	left: 89%;
 	z-index: 4;
 }
 
@@ -172,10 +179,12 @@ span{
 	display: block;
 	position: absolute;
 	left: 1%;
+	/*ISSUE: MUST FIND WAY TO CENTER TEXT*/
 	top: 50%;
 }
 
 #resume-inside{
-	left:9%;
+	background-color: #00E384;
+	left:11%;
 	z-index: 8;
 }

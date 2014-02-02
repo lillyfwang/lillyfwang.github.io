@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+	//ENABLING TIPSY PLUGIN
+	$(function() {
+   		$('.east').tipsy({gravity: 'e'});
+   		$('#error').tipsy({gravity: 'n'});
+ 	});
+
 	//MAIN PAGE ANIMATIONS
 	$('#about').hover(
 		function()

@@ -40,6 +40,20 @@ div{
 	opacity: .6;
 }
 
+.thumbnails{
+	background: transparent;
+	height:60px;
+}
+
+td{
+	width: 300px;
+}
+
+a{
+	text-decoration: none;
+	color:#2E2511;
+}
+
 #photo{
 	height: 100px;
 	width: 100px;
@@ -168,6 +182,7 @@ span{
 	height: 80%;
 	width: 60%;
 	text-align: right;
+	padding-top: 10%;
 }
 
 /* GITHUB SECTION CSS CODE */

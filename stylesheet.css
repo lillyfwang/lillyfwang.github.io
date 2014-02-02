@@ -1,32 +1,68 @@
 body{
-	background-color:#FAFAFA;
+	background-color:#FFFCF5;
 }
 
 div{
-	font-family: Garamond;
-	font-size: 15px;
+	font-family: Arial;
+	font-size: 20px;
+	font-weight: 900;
 	text-align: center;
-	color: #000000;
+	color: white;
+	opacity: .4;
+}
+
+img{
+	height: 100px;
+	width: 100px;
+	border-radius: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: .9;
+	border: double 3px #2E2511;
+}
+
+span{
+	font-size: 15px;
+	text-transform: capitalize;
 }
 
 .leftright p{
 	position: fixed;
 	top:50%;
+	padding-left: 1%;
+}
+
+
+#github p{
+	padding-top:1%;
+}
+
+#about p{
+	padding-top: 2%;
+}
+
+#contact p{
+	padding-left: 5%;
 }
 
 #name{
-	font-size: 40px;
+	font-size: 30px;
 	font-family: Minion;
+	text-align: center;
+	color: #2E2511;
 	position: fixed;
-	top: 40%;
-	left: 48%;
+	top: 35%;
+	left: 46%;
 	height: 100px;
 	width:300px;
 	border: none;
+	opacity: 1;
 }
 
 #about{
-	background-color: rgba(0, 126, 237, .3);
+	display: block;
+	position: relative;
+	background-color: rgb(0, 126, 237);
 	width: 100%;
 	height:22%;
 	position: fixed;
@@ -36,7 +72,7 @@ div{
 }
 
 #contact{
-	background-color: rgba(0, 198, 237, .3);
+	background-color: rgb(0, 198, 237);
 	width: 28%;
 	height:100%;
 	position: fixed;
@@ -45,10 +81,14 @@ div{
 	z-index: 2;
 }
 
+#contact-inner{
+	opacity: 0;
+}
+
 #github{
-	background-color: rgba(0, 237, 158, .3);
+	background-color: rgb(0, 237, 158);
 	width: 100%;
-	height:15%;
+	height:16%;
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
@@ -56,11 +96,15 @@ div{
 }
 
 #resume{
-	background-color: rgba(0, 237, 237, .3);
-	width: 8%;
+	background-color: rgb(0, 237, 237);
+	width: 9%;
 	height:100%;
 	position: fixed;
 	top: 0px;
 	right: 0px;
 	z-index: 4;
+}
+
+#resume-inner{
+	opacity: 0;
 }

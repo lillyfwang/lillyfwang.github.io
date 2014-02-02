@@ -32,12 +32,13 @@ $(document).ready(function() {
 		if (aboutOpen) {
 			$(this).animate({bottom: "0%", opacity: 1, backgroundColor: "#FFFCF5", color: "#2E2511"}, 800);
 			$(this).css("z-index", "10");
+			$('#about-inside').css("border", "solid 5px black");
 		}
 		else
 		{
 			$(this).animate({bottom: "78%",opacity: .4, backgroundColor: "rgb(0, 126, 237)", color: "#FFFCF5"}, 800);
 			$(this).css("z-index", "1");
-
+			$('#about-inside').css("border", "none");
 		}
 	});
 
@@ -48,11 +49,13 @@ $(document).ready(function() {
 		if (contactOpen) {
 			$(this).animate({right: "0%", opacity: 1, backgroundColor: "#FFFCF5", color: "#2E2511"}, 800);
 			$(this).css("z-index", "10");
+			$('#contact-inside').css("border", "solid 5px black");
 		}
 		else
 		{
 			$(this).animate({right: "72%",opacity: .4, backgroundColor: "#C68CFF", color: "#FFFCF5"}, 800);
 			$(this).css("z-index", "2");
+			$('#contact-inside').css("border", "none");
 		}
 	});
 
@@ -63,11 +66,13 @@ $(document).ready(function() {
 		if (ghOpen) {
 			$(this).animate({top: "0%", opacity: 1, backgroundColor: "#FFFCF5", color: "#2E2511"}, 800);
 			$(this).css("z-index", "10");
+			$('#github-inside').css("border", "solid 5px black");
 		}
 		else
 		{
 			$(this).animate({top: "84%",opacity: .4, backgroundColor: "rgb(0, 198, 237)", color: "#FFFCF5"}, 800);
 			$(this).css("z-index", "3");
+			$('#github-inside').css("border", "none");
 		}
 	});
 
@@ -78,11 +83,13 @@ $(document).ready(function() {
 		if (resumeOpen) {
 			$(this).animate({left: "0%", opacity: 1, backgroundColor: "#FFFCF5", color: "#2E2511"}, 800);
 			$(this).css("z-index", "10");
+			$('#resume-inside').css("border", "solid 5px black");
 		}
 		else
 		{
 			$(this).animate({left: "89%",opacity: .4, backgroundColor: "#00E384", color: "#FFFCF5"}, 800);
 			$(this).css("z-index", "4");
+			$('#resume-inside').css("border", "none");
 		}
 	});
 

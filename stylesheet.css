@@ -40,7 +40,7 @@ div{
 	opacity: .6;
 }
 
-img{
+#photo{
 	height: 100px;
 	width: 100px;
 	border-radius: 100px;
@@ -50,14 +50,13 @@ img{
 	border: double 3px #2E2511;
 }
 
-img:hover{
+#photo:hover{
 	opacity: 1;
 	border: solid 3px #423B28;
 }
 
 span{
 	font-size: 15px;
-	text-transform: capitalize;
 }
 
 #name{
@@ -77,12 +76,30 @@ span{
 .inside{
 	display: block;
 	position: absolute;
-	opacity: .4;
 	height: 100%;
 	width: 100%;
-	color: black;
+}
+
+.inside div{
 	font-family: Garamond;
+	color:black;
 	font-size: 20px;
+}
+
+.content{
+	display: block;
+	position: absolute;
+	height:100px;
+	width: 100px;
+	opacity: 1;
+	color: black;
+	z-index: 50;
+	font-size: 16px;
+	text-align: left;
+	overflow: scroll;
+	/*FOR REFERENCE TO SEE THE DIV
+	background-color: #FFFCF5;
+	*/
 }
 
 #name:hover{
@@ -104,7 +121,6 @@ span{
 	display: block;
 	position: absolute;
 	bottom: 7%;
-	/*ISSUE: MUST FIND WAY TO CENTER TEXT*/
 	left: 47.5%;
 }
 
@@ -112,6 +128,13 @@ span{
 	background-color: rgb(0, 126, 237);
 	bottom: 22%;
 	z-index: 5;
+}
+
+#about-inside div{
+	bottom:10%;
+	margin-left: 12.5%;
+	height: 60%;
+	width: 75%;
 }
 
 /* CONTACT SECTION CSS CODE */
@@ -139,6 +162,14 @@ span{
 	z-index: 6;
 }
 
+#contact-inside div{
+	right:6%;
+	top:10%;
+	height: 80%;
+	width: 60%;
+	text-align: right;
+}
+
 /* GITHUB SECTION CSS CODE */
 #github{
 	display: block;
@@ -164,6 +195,13 @@ span{
 	z-index: 7;
 }
 
+#github-inside div{
+	margin: 5% 10%;
+	height: 68%;
+	width:80%;
+	text-align: center;
+}
+
 /* RESUME SECTION CSS CODE */
 #resume{
 	display: block;
@@ -187,4 +225,10 @@ span{
 	background-color: #00E384;
 	left:11%;
 	z-index: 8;
+}
+
+#resume-inside div{
+	margin: 5% 9%;
+	height: 80%;
+	width:71%;
 }

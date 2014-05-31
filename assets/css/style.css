@@ -59,3 +59,17 @@ a{
   color: #454545;
   text-align: center;
 }
+
+#contact {
+  color: #fff;
+  text-align: center;
+}
+
+#contact div {
+  background: black;
+  background-color: rgba(0,0,0,.6);
+}
+
+#contact p {
+  font-style: italic;
+}

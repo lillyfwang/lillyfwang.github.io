@@ -13,11 +13,6 @@ h2 {
   margin-bottom: 0.75em;
 }
 
-.button {
-  font-size: 1.25em;
-  padding: 0.65em 2.25em 0.65em 2.25em;
-}
-
 #nav {
   text-align: right;
 }
@@ -74,4 +69,29 @@ h2 {
 
 #preview {
   width: 20em;
+}
+
+#contact {
+  margin: 4em 0 2em 0;
+  padding: 3em 0 3em 0;
+}
+
+#contact h2 {
+  font-size: 2em;
+  margin-bottom: .5em;
+}
+
+#contact div {
+  border-radius: 0.5em;
+}
+
+#contact p {
+  font-size: 1.25em;
+  margin-bottom: 1.75em;
+}
+
+.icon {
+  height: 2em;
+  opacity: .8;
+  padding: 0 2em 0 2em ;
 }

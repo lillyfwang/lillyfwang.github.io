@@ -1,124 +1,44 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-	<title>Lilly F Wang</title>
-	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
-	<link rel="stylesheet" href="tipsy.css" type="text/css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
-	<script type='text/javascript' src='jquery.tipsy.js'></script>
-</head>
+  <head>
+    <title>Lilly F Wang</title>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"> 
+    {
+      prefix: "assets/css/style",
+      resetCSS: true,
+      boxModel: "border",
+      grid: { gutters: 30 },
+      breakpoints: {
+        wide: { range: "1200-", containers: 1140, grid: { gutters: 50 } },
+        narrow: { range: "481-1199", containers: 960 },
+        mobile: { range: "-480", containers: "fluid", lockViewport: true, grid: { collapse: true } }
+        }
+      }
+    </script>
+  </head>
 
-<body>
-	<!--FRONT PAGE NAME-->
-	<p id="name">
-		<img id ="photo" src="https://en.gravatar.com/userimage/57102427/5541c7625a9962ec857db947b7d4a5bc.jpg?size=200"><br>
-		Lilly F Wang <br>
-		<span>Columbia University in the City of New York</span>
-	</p>
-	
-	<!--RESUME TAB CONTENT-->
-	<div class="outside" id="resume"> 
-		<p>Resume > </p>
-		<div class="inside" id="resume-inside">
-			<div class="content">
-				<h1>Relevant Coursework:</h1>
-				<ul><span>
-					<li>Honors Introduction to Computer Science (COMS W1007)</li>
-					<li>Honors Data Structures and Algorithms (COMS 3137)</li>
-					<li>Discrete Mathematics: Introduction to Combinatorics and Graph Theory (COMS 3203)</li>
-					<li>Advanced Programming (COMS W3157)</li>
-					<li>Calculus III (MATH V1201)</li>
-					<li>Introduction to Probability and Statistics (SIEO W4150)</li>
-				</span></ul><br>
-				<h1>Programming Languages:</h1>
-				<ul><span>
-					<li>Proficient: Java, C/C++, Matlab, HTML, CSS, Javascript</li>
-					<li>Learning: Python</li>
-					<li>Want to Learn: Ruby, PHP, Objective C</li>
-				</span></ul> <br>
-				<h1>Jobs:</h1> 
-				<h3>Undergraduate Recruitment Committee Intern</h3>
-				<span>Columbia University in the City of New York<br>
-				The Undergraduate Recruitment Committee (URC) is a selective campus organization that supports the Office of Undergraduate Admissions and the Visitors Center in sharing the Columbia undergraduate experience with prospective students, families, and visitors. </span><br><br>
-				<h3>Engineering Days on Campus Intern</h3>
-				<span>Columbia University in the City of New York<br>
-				Each April, Columbia holds Days on Campus (DOC), a weekend long event designed to give admitted students and their families a taste of the university atmosphere. This event organizes residence hall tours, overviews of the neighborhood (Morningside Heights), class sit-ins, academic panels, student group performances, a nighttime bus tour of NYC, an activities fair, etc.</span><br><br>		
-				<h3>Research Assistant</h3>
-				<span>The University of Chicago<br>
-				With the founding of the Ben May Laboratory for Cancer Research, a history of discovery and translation began that has evolved into what is now the Ben May Department for Cancer Research.</span><br><br><br>
-			</div>
-		</div>
-	</div>
-	
-	<!--ABOUT TAB CONTENT-->
-	<div class="outside" id="about">
-		<p> ^ <br> About Me</p>
-		<div class="inside" id="about-inside">
-			<div class="content">
-				<h1>Lilly F Wang</h1>
-				<span>I am a sophomore studying Computer Scienceat the Fu Foundation School of Engineering and Applied Sciences.Along with my interest in programming, I am also pursuing a minor in psychology and specialization in pre-medical studies.<br><br>
-				I grew up in a small northern suburb of Chicago called Lake Bluff. There, I attended Lake Forest High School and was part of the Varsity Swim Team, Math Team, EuroChallenge Team, Science Olympiad, and Red Cross Club. <br><br>
-				At Columbia, I am part of the Undergraduate Recruitment Committee (URC), Engineers Without Borders (EWB), and FeelGood communities. Part of my role in the URC is to serve as the Engineering Coordinator where I get to lead and train new tour guides to give the General and Engineering tours of campus. I am on the public relations team for EWB, and our main goal the past year was to improve our chapter&#39;s online presence. The team created a new website, Twitter, Google+, and Facebook page to draw more attention to what our group does. FeelGood is just a fun group on campus I am a part of, and we specialize in making and delivering grilled cheese to hungry students around campus. <br><br>
-				In terms of coding, I push myself to learn and try new things. For example, as of November 2013, I knew nothing about website design. Ask me what jQuery was, and I would have thought it was a programming language. I really wanted to learn how to do website design though, and I taught myself the basics of HTML/CSS, and Javascript. From November of last year to January of this year, I was able to create my whole website from scratch. This kind of drive carries over into all aspects of my life, and I am always eager to pick up new hobbies and skills that I can apply to create new things. <br><br>
-				A last little fun fact about me is that F is my full middle name. It looks like there should be a period following my middle name on the front page; but since F is technically my full name, there is no need for it. I actually put one there out of habit, but my friend pointed out that it was technically wrong to have the period there in my case. The nakedness of the F probably looks as strange to you as it does to me.
-				</span>
-			</div>
-		</div>
-	</div>
-	
-	<!--CONTACT ME TAB CONTENT-->
-	<div class="outside" id="contact">
-		<p> < Contact Me</p> 
-		<div class="inside" id="contact-inside">
-			<div class="content">
-				<table border="1">
-					<tr>
-						<td>
-							<span> <br><br><br><br>
-								Feel free to contact me anytime<br>
-								and check out my other social media accounts!
-							</span>
-						</td>
-						<td>			
-							<!-- GitHub Account -->
-							<a href="https://github.com/lillyfwang" class= "east" original-title="GitHub"><img class="thumbnails" src="http://i739.photobucket.com/albums/xx34/melbelle627/github_zps7ed71acc.png"/></a> <br><br>
-							<!-- Facebook Account -->
-							<a href="https://www.facebook.com/lilly.f.wang" class= "east" original-title="Facebook"><img class="thumbnails" src="http://i739.photobucket.com/albums/xx34/melbelle627/facebook_zps0a76f726.png" /></a> <br><br>
-							<!-- LinkedIn Account -->
-							<a href="http://www.linkedin.com/in/lillyfwang" class= "east" original-title="LinkedIn"><img class="thumbnails" src="http://i739.photobucket.com/albums/xx34/melbelle627/linkedin_zpsd49bf8ac.png" /></a> <br><br>
-							<!-- Email Account -->
-							<a href="#" class= "east" original-title="Gmail: lillyfwang"><img class="thumbnails" src="http://i739.photobucket.com/albums/xx34/melbelle627/email_zps207ccb0f.png"></a>
-						</td>
-					</tr>
-				</table>
+  <body>
+  <div class = "container">
+    <nav id="nav" class="row">
+      <div class="2u"><a href="#welcome">Home</a></div>
+      <div class="2u"><a href="#about">About</a></div>
+      <div class="2u"><a href="#resume">Resume</a></div>
+      <div class="2u"><a href="#projects">Projects</a></div>
+      <div class="2u"><a href="#contact">Contact</a></div>
+    </nav>
+    <!-- WELCOME -->
+        <section id="welcome">
+          <h2>LILLY F WANG</h2>
+          <p>Hello</p>
+          <a href="#" class="button">Click Me</a>
+        </section>
+    </div>
+  </body>
+</html>
 
-			</div>
-		</div>
-	</div>
-	
-	<!--PROJECTS TAB CONTENT-->
-	<div class="outside" id="github">
-		<p>Projects <br> v</p> <br><br>
-		<div class="inside" id="github-inside">
-			<div class="content">
-				<!--Super Smash Brothers-->
-				<a href = "http://lillyfwang.com/super-smash-bros/"><h3>Super Smash Brothers (Personal Project, Java)</h3></a>
-				<em>PC adaptation of Nintendo’s Super Smash Brothers using the Ucigame Java graphics package to animate characters.</em><br><br><br>
-				<!--Binomial Calculator-->
-				<a href = "http://lillyfwang.com/binomial-calculator/"><h3>Binomial Calculator (Classwork, Java)</h3></a>
-				<em>An efficient application designed to evaluate mathematical expressions using various data structures such as binary search trees and stacks.</em><br><br><br>
-				<!--Personal Website-->
-				<a href = "https://github.com/lillyfwang/lillyfwang.github.io"><h3>Personal Website (Personal Project, CSS/Javascript)</h3></a>
-				<em>Reflects the most recent web design technologies I teach myself, a place to apply new skills as I learn them.</em>
-			</div>
-		</div>
-	</div>
-</body>
-
-
-<!--CREDITS:
+<!--
+CREDITS/THANK YOU:
 SOCIAL MEDIA ICONS: VERVEX ==> http://vervex.deviantart.com/art/Somacro-40-300DPI-Social-Media-Icons-267955425,
-TIPSY: JASON FRAME ==> https://github.com/jaz303/tipsy
-RESET CSS: ERIC ==> http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/ -->
+SKELJS: Adam Jensen ==> https://github.com/n33/skelJS
+ -->

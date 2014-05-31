@@ -3,13 +3,16 @@ body {
   letter-spacing: 0.035em;
   line-height: 1.75em;
 }
+
 h1 {
   font-size: 1.5em;
 }
+
 h2 {
-  font-size: 1.25em;
+  font-size: 1.75em;
   margin-bottom: 0.75em;
 }
+
 .button {
   font-size: 1.25em;
   padding: 0.65em 2.25em 0.65em 2.25em;
@@ -44,11 +47,31 @@ h2 {
 }
 
 #about {
-  margin: 4em -20em 2em -20em;
-  padding: 3em 0 3em 0;
+  margin: 4em -3.7em 2em -3.7em;
+  padding: 8em 0 8em 0;
+  text-shadow:.05em .05em .05em gray;
 }
 
-#about h2 {
-  font-size: 1.75em;
-  margin-bottom: .5em;
+#resume {
+  border:.25em solid #454545;
+  margin: 4em 0em 4em 0em;
+  padding: 2em 0 2em 0;
+  height: 30em;
+}
+
+#resume h2 {
+  text-shadow:.05em .05em .05em #CCAFE0;
+}
+
+#resume p {
+  font-size: .8em;
+}
+
+#projects {
+  margin: 4em -3.7em 2em -3.7em;
+  padding: 4em 0 4em 0;
+}
+
+#preview {
+  width: 20em;
 }

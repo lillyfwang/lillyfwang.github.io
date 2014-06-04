@@ -14,12 +14,21 @@ a{
   text-decoration: none;
 }
 
-#nav {
-  background: black;
-  background-color: rgba(0,0,0, .9);
+#error {
+  text-decoration: none;
+  color: white;
 }
 
-#nav a {
+#navBar {
+  background: black;
+  background-color: rgba(0,0,0, .6);
+  text-align: center;
+  line-height: 50px;
+}
+
+#navBar a {
+  display: inline-block;
+  margin: 0 3em 0 3em;
   color: #fff;
 }
 
@@ -43,7 +52,7 @@ a{
 }
 
 #resume {
-  background: #FAFAFA;
+  background: #FCFCFC;
   background-size: 100%;
   color: #454545;
   text-align: center;
@@ -55,7 +64,7 @@ a{
 }
 
 #projects {
-  background-color: #FAFAFA;
+  background-color: #E6E6E6;
   color: #454545;
   text-align: center;
 }

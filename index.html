@@ -3,29 +3,19 @@
   <head>
     <title>Lilly F Wang</title>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/skel.min.js"> 
-    {
-      prefix: "assets/css/style",
-      resetCSS: true,
-      boxModel: "border",
-      grid: { gutters: 30 },
-      breakpoints: {
-        wide: { range: "1200-", containers: 1140, grid: { gutters: 50 } },
-        narrow: { range: "481-1199", containers: 960 },
-        mobile: { range: "-480", containers: "fluid", lockViewport: true, grid: { collapse: true } }
-        }
-      }
-    </script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/skel-panels.min.js"></script>
   </head>
 
   <body background="assets/images/Doorway.jpg">
   <div class = "container">
-    <div id="nav" class="row">
-      <div class="2u"><a href="#welcome"><span class="transparent">Home</span></a></div>
-      <div class="2u"><a href="#about">About</a></div>
-      <div class="2u"><a href="#resume">R&eacute;sum&eacute;</a></div>
-      <div class="2u"><a href="#projects">Projects</a></div>
-      <div class="2u"><a href="#contact">Contact</a></div>
+    <div id="navBar">
+       <a id = "section" href="#welcome">Home</a>
+       <a id = "section" href="#about">About</a>
+       <a id = "section" href="#resume">R&eacute;sum&eacute;</a>
+       <a id = "section" href="#projects">Projects</a>
+       <a id = "section" href="#contact">Contact</a>
     </div>
     <!-- WELCOME -->
     <div id="welcome" class="row">
@@ -45,7 +35,7 @@
     </div>
     <!--Resume -->
     <div id="resume" class="row">
-      <div class="3u" style="background:url(assets/images/ResumeBord.png)">
+      <div class="3u" id ="design" style="background:url(assets/images/ResumeBord.png)">
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </div>
       <div class="8u">
@@ -79,13 +69,15 @@
     <!-- Projects -->
     <div id="projects">
       <h2>P R O J E C T S</h2>
+      <p>_________________________<br>A small gallery of Computer Science projects I have completed. <br><br></p>
       <!-- SSB -->
       <div class="row"> 
         <div class="-1u 3u">
           <img id="preview" src="assets/images/SSB.jpg">
         </div>
-        <div class="-1u 6u"> <br><br>
+        <div class="-1u 6u"> <br>
           <a href="http://lillyfwang.github.io/super-smash-bros/"><span>Super Smash Brothers</span></a><br>
+          Written in Java<br>
           PC adaptation of Nintendo's Super Smash Brothers using the Ucigame Java graphics package to animate characters.
         </div>
       </div>
@@ -94,8 +86,9 @@
         <div class="-1u 3u">
           <img id="preview" src="assets/images/BC.png">
         </div>
-        <div class="-1u 6u"> <br><br>
+        <div class="-1u 6u"> <br>
           <a href="http://lillyfwang.github.io/binomial-calculator/"><span>Binomial Calculator</span></a><br>
+          Written in Java<br>
           An efficient application designed to evaluate mathematical expressions using various data structures such as binary search trees and stacks.
         </div>
       </div>
@@ -104,8 +97,9 @@
         <div class="-1u 3u">
           <img id="preview" src="assets/images/Website.png">
         </div>
-        <div class="-1u 6u"> <br>
+        <div class="-1u 6u">
           <span>Personal Website</span><br>
+          Written in HTML/CSS, JavaScript <br>
           Reflects the most recent web design technologies I teach myself, a place to apply new skills as I learn them.
         </div>
       </div>

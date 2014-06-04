@@ -10,8 +10,8 @@ h2 {
 }
 
 #navBar{
-  font-size: .9em;
-  line-height: 50px;
+  font-size: .85em;
+  line-height: 40px;
 }
 
 #welcome {
@@ -34,7 +34,7 @@ h2 {
 }
 
 #about {
-  margin: 4em -3.7em 2em -3.7em;
+  margin: 4em -3em 2em -3em;
   padding: 8em 0 8em 0;
   text-shadow:.05em .05em .05em gray;
 }
@@ -55,7 +55,7 @@ h2 {
 }
 
 #projects {
-  margin: 4em -3.7em 2em -3.7em;
+  margin: 4em -3em 2em -3em;
   padding: 4em 0 4em 0;
 }
 

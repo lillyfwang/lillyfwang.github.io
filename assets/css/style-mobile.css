@@ -10,8 +10,8 @@ h2 {
 }
 
 #navBar{
-  font-size: .9em;
-  line-height: 50px;
+  font-size: .8em;
+  line-height: 30px;
 }
 
 #welcome {
@@ -20,7 +20,7 @@ h2 {
 }
 
 #welcome h2 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: .5em;
 }
 
@@ -29,7 +29,7 @@ h2 {
 }
 
 #welcome p {
-  font-size: 1.25em;
+  font-size: 1em;
   margin-bottom: 1.75em;
 }
 
@@ -52,6 +52,11 @@ h2 {
 
 #resume p {
   font-size: .8em;
+}
+
+#design{
+  width: 0px;
+  height: 0px;
 }
 
 #projects {

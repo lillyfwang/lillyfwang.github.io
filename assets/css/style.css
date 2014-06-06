@@ -1,3 +1,11 @@
+html {
+  background: url('http://i739.photobucket.com/albums/xx34/melbelle627/Doorway_zps9d5d6fc6.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
   background-size: 100%;
   color: #b2b9bC;

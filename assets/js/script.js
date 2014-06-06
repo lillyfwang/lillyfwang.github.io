@@ -31,27 +31,18 @@ window._skel_panels_config = {
 };
 
 $(document).ready(function(){
-  //
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+        || location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+           if (target.length) {
+             $('html,body').animate({
+                 scrollTop: target.offset().top-70
+            }, 900);
+            return false;
+        }
+    }
+  });
 });
-
-
-function scrollToAnchor(aid){
-    var aTag = $("a[name='"+ aid +"']");
-    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
-}
-
-/*
-scrollToAnchor('id3');
-
-$('a[href^="#"]').on('click',function (e) {
-    e.preventDefault();
-
-    var target = this.hash,
-    $target = $(target);
-
-    $('html, body').stop().animate({
-        'scrollTop': $target.offset().top
-    }, 900, function () {
-        window.location.hash = target;
-    });
-}); */

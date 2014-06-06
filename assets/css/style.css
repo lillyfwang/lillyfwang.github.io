@@ -40,6 +40,22 @@ a{
   color: #fff;
 }
 
+
+#navBarM {
+  background: black;
+  background-color: rgba(0,0,0, .6);
+  text-align: center;
+  line-height: 50px;
+}
+
+#navBarM a {
+  display: inline-block;
+  margin: 0 3em 0 3em;
+  color: #fff;
+}
+
+
+
 #welcome {
   color: #fff;
   text-align: center;

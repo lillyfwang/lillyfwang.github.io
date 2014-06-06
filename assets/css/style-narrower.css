@@ -1,7 +1,7 @@
 body {
-  font-size: 1.15em;
-  letter-spacing: 0.035em;
-  line-height: 1.75em;
+  font-size: .95em;
+  letter-spacing: 0.025em;
+  line-height: 1.7em;
 }
 
 h2 {
@@ -20,7 +20,7 @@ h2 {
 }
 
 #welcome h2 {
-  font-size: 2em;
+  font-size: 1.25em;
   margin-bottom: .5em;
 }
 
@@ -29,12 +29,12 @@ h2 {
 }
 
 #welcome p {
-  font-size: 1em;
+  font-size: .9em;
   margin-bottom: 1.75em;
 }
 
 #about {
-  margin: 4em -3.7em 2em -3.7em;
+  margin: 4em -3em 2em -3.7em;
   padding: 8em 0 8em 0;
   text-shadow:.05em .05em .05em gray;
 }
@@ -52,11 +52,13 @@ h2 {
 
 #resume p {
   font-size: .8em;
+  padding: 0 1em 0 1em;
 }
 
 #projects {
   margin: 4em -3.7em 2em -3.7em;
   padding: 4em 0 4em 0;
+  font-size: .85em;
 }
 
 #projects h2 {
@@ -73,7 +75,7 @@ h2 {
 }
 
 #contact h2 {
-  font-size: 2em;
+  font-size: 1.25em;
   margin-bottom: .5em;
 }
 
@@ -82,7 +84,7 @@ h2 {
 }
 
 #contact p {
-  font-size: 1.25em;
+  font-size: .8em;
   margin-bottom: 1.75em;
 }
 

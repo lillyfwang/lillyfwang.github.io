@@ -119,18 +119,20 @@ a{
   border: none; 
 } 
 
-#tabs .ui-tabs-nav .ui-state-active { 
-  background: transparent url('../images/uiTabsArrow.png') no-repeat bottom center; 
-  border: none; 
+#tabs .ui-tabs-nav .ui-state-active {  
+  border: none;
+  border-radius: 0px;
+  border-top: 3px solid #c0c0c0;
 } 
 
 #tabs .ui-tabs-nav .ui-state-default a { 
   color: #c0c0c0; 
+  font-size: .8em;
 } 
 
 #tabs .ui-tabs-nav .ui-state-active a { 
   color: #9E97C9; 
-  font-size: 1em;
+  font-size: .8em;
 }
 
 #tabs .ui-tabs-nav { 

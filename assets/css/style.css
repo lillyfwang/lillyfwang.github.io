@@ -54,16 +54,23 @@ a{
   color: #fff;
 }
 
-
-
 #welcome {
   color: #fff;
   text-align: center;
 }
 
-#welcome div {
+#welcome-container {
   background: black;
+  padding: 0 2em;
   background-color: rgba(0,0,0,.6);
+}
+
+#welcome-name{
+  border-radius: 0;
+  margin: 3em 0;
+  padding: 2em 1em;
+  border-top: white solid 2px;
+  border-bottom: white solid 2px;
 }
 
 #welcome p {
@@ -93,12 +100,62 @@ a{
   text-align: center;
 }
 
+#tabs { 
+  background: transparent; 
+  border: none; 
+} 
+
+#tabs .ui-widget-header { 
+  background: transparent; 
+  border: none; 
+  border-bottom: 1px solid #c0c0c0; 
+  -moz-border-radius: 0px; 
+  -webkit-border-radius: 0px; 
+  border-radius: 0px; 
+} 
+
+#tabs .ui-tabs-nav .ui-state-default { 
+  background: transparent; 
+  border: none; 
+} 
+
+#tabs .ui-tabs-nav .ui-state-active { 
+  background: transparent url('../images/uiTabsArrow.png') no-repeat bottom center; 
+  border: none; 
+} 
+
+#tabs .ui-tabs-nav .ui-state-default a { 
+  color: #c0c0c0; 
+} 
+
+#tabs .ui-tabs-nav .ui-state-active a { 
+  color: #9E97C9; 
+  font-size: 1em;
+}
+
+#tabs .ui-tabs-nav { 
+  text-align: center; 
+} 
+#tabs .ui-tabs-nav li { 
+  display: inline-block; 
+  float: none; 
+}
+
+.ui-widget-content{
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-size: .9em;
+}
+
+#preview{
+  max-width: 100%;
+}
+
 #contact {
   color: #fff;
   text-align: center;
 }
 
-#contact div {
+#contact-container {
   background: black;
   background-color: rgba(0,0,0,.6);
 }

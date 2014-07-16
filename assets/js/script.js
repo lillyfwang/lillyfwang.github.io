@@ -37,11 +37,17 @@ $(document).ready(function(){
         var target = $(this.hash);
         target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
            if (target.length) {
+            if(this.hash.length > 3) {
              $('html,body').animate({
                  scrollTop: target.offset().top-70
             }, 900);
             return false;
+          }
         }
     }
+  });
+
+  $(function() {
+    $( "#tabs" ).tabs();
   });
 });

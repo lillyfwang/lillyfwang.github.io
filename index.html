@@ -2,10 +2,12 @@
 <html>
   <head>
     <title>Lilly F Wang</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.min.css">
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/skel-panels.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
   </head>
 
   <body>
@@ -19,10 +21,8 @@
     </div>
     <!-- WELCOME -->
     <div id="welcome" class="row">
-      <div class="-2u 8u">
-      <p>_________________________________________</p>
-      <h2>L I L L Y . F . W A N G</h2>
-      <p>_________________________________________</p>
+      <div id="welcome-container" class="-2u 8u">
+      <div id="welcome-name"><h2>L I L L Y . F . W A N G</h2></div>
       <p>Personal Portfolio</p>
       </div>
     </div>
@@ -70,46 +70,75 @@
     <div id="projects">
       <h2>P R O J E C T S</h2>
       <p>_________________________<br>A small gallery of Computer Science projects I have completed. <br><br></p>
-      <!-- SSB -->
-      <div class="row"> 
-        <div class="-1u 3u">
-          <img id="preview" src="assets/images/SSB.jpg">
+
+
+      <div id="tabs">
+        <ul>
+          <li><a href="#ss">SS</a></li>
+          <li><a href="#bt">BT</a></li>
+          <li><a href="#pw">PW</a></li>
+          <li><a href="#kk">KK</a></li>
+        </ul>
+        <!-- SSB -->
+        <div id="ss">
+          <div class="row"> 
+            <div class="-1u 4u">
+              <img id="preview" src="assets/images/SSB.jpg">
+            </div>
+            <div class="-1u 5u"> <br>
+              <a href="http://lillyfwang.github.io/super-smash-bros/"><span>Super Smash Brothers</span></a><br>
+              Written in Java<br>
+              PC adaptation of Nintendo's Super Smash Brothers using the Ucigame Java graphics package to animate characters.
+            </div>
+          </div>
         </div>
-        <div class="-1u 6u"> <br>
-          <a href="http://lillyfwang.github.io/super-smash-bros/"><span>Super Smash Brothers</span></a><br>
-          Written in Java<br>
-          PC adaptation of Nintendo's Super Smash Brothers using the Ucigame Java graphics package to animate characters.
+        <!-- Binomial -->
+        <div id="bt">
+          <div class="row">
+            <div class="-1u 4u">
+              <img id="preview" src="assets/images/BC.png">
+            </div>
+            <div class="-1u 5u"> <br>
+              <a href="http://lillyfwang.github.io/binomial-calculator/"><span>Binomial Calculator</span></a><br>
+              Written in Java<br>
+              An efficient application designed to evaluate mathematical expressions using various data structures such as binary search trees and stacks.
+            </div>
+          </div>
         </div>
-      </div>
-       <!-- Binomial -->
-      <div class="row">
-        <div class="-1u 3u">
-          <img id="preview" src="assets/images/BC.png">
+        <!-- Website -->
+        <div id="pw">
+          <div class="row"> 
+            <div class="-1u 4u">
+              <img id="preview" src="assets/images/Website.png">
+            </div>
+            <div class="-1u 5u">
+              <span>Personal Website</span><br>
+              Written in HTML/CSS, JavaScript <br>
+              Reflects the most recent web design technologies I teach myself, a place to apply new skills as I learn them.
+            </div>
+          </div>
         </div>
-        <div class="-1u 6u"> <br>
-          <a href="http://lillyfwang.github.io/binomial-calculator/"><span>Binomial Calculator</span></a><br>
-          Written in Java<br>
-          An efficient application designed to evaluate mathematical expressions using various data structures such as binary search trees and stacks.
-        </div>
-      </div>
-      <!-- Website -->
-      <div class="row"> 
-        <div class="-1u 3u">
-          <img id="preview" src="assets/images/Website.png">
-        </div>
-        <div class="-1u 6u">
-          <span>Personal Website</span><br>
-          Written in HTML/CSS, JavaScript <br>
-          Reflects the most recent web design technologies I teach myself, a place to apply new skills as I learn them.
+        <div id="kk">
+          <div class="row"> 
+            <div class="-1u 4u">
+              <img id="preview" src="assets/images/KookopaLogin.png">
+            </div>
+            <div class="-1u 5u">
+              <a href="http://www.kookopa.com"><span>Kookopa</span><br></a>
+              Written in HTML/CSS, JavaScript, Liquid <br>
+              Kookopa is a hassle-free online platform for women to rent items for each other. The startup connects people and helps expand their dream closets.
+            </div>
+          </div>
         </div>
       </div>
     </div>
+      
+      
+      
     <!-- CONTACT -->
     <div id="contact" class="row">
-      <div class="-2u 8u">
-      <p>_________________________________________</p>
-      <h2>C O N T A C T . M E</h2>
-      <p>_________________________________________</p>
+      <div id="welcome-container" class="-2u 8u">
+      <div id="welcome-name"><h2>C O N T A C T . M E</h2></div>
       <!-- LinkedIn Account -->
       <a href="http://www.linkedin.com/in/lillyfwang"><img class="icon" src="http://i739.photobucket.com/albums/xx34/melbelle627/linkedin_zpsd49bf8ac.png" /></a>
       <!-- Facebook Account -->

@@ -16,9 +16,9 @@ body {
 }
 
 h2 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   font-weight: 100;
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 span {
@@ -132,6 +132,7 @@ a{
 }
 
 #tabs { 
+  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   background: transparent; 
   border: none; 
 } 
@@ -211,7 +212,7 @@ a{
   font-style: italic;
 }
 
-.icon{
-  margin: 5% 2% 0 ;
-  width: 25%;
+#icon{
+  color: white;
+  margin: 9% 10% 0 10%;
 }

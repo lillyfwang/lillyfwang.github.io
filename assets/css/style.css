@@ -1,5 +1,5 @@
 html {
-  background: url('http://i739.photobucket.com/albums/xx34/melbelle627/Doorway_zps9d5d6fc6.jpg') no-repeat center center fixed;
+  background: url('../images/Doorway.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12,6 +12,13 @@ body {
   line-height: 2em;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 100;
+  margin: 0px;
+}
+
+h2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 100;
+  font-size: 3em;
 }
 
 span {
@@ -32,6 +39,10 @@ a{
   background-color: rgba(0,0,0, .6);
   text-align: center;
   line-height: 50px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 1000;
 }
 
 #navBar a {
@@ -40,35 +51,24 @@ a{
   color: #fff;
 }
 
-
-#navBarM {
-  background: black;
-  background-color: rgba(0,0,0, .6);
-  text-align: center;
-  line-height: 50px;
-}
-
-#navBarM a {
-  display: inline-block;
-  margin: 0 3em 0 3em;
-  color: #fff;
-}
-
 #welcome {
   color: #fff;
   text-align: center;
+  margin: 15% 0;
+  width: 100%;
 }
 
 #welcome-container {
   background: black;
-  padding: 0 2em;
   background-color: rgba(0,0,0,.6);
+  border-radius: 2em;
+  margin: auto;
+  width: 40%;
+  padding: 7em;
 }
 
 #welcome-name{
   border-radius: 0;
-  margin: 3em 0;
-  padding: 2em 1em;
   border-top: white solid 2px;
   border-bottom: white solid 2px;
 }
@@ -78,26 +78,57 @@ a{
 }
 
 #about {
-  color: white;
+  background: url('../images/AboutBack.jpg') center;
   text-align: center;
+  color: white;
+  width: 100%;
+  margin: 15% 0;
+}
+
+#about-info{
+  padding: 8em ;
 }
 
 #resume {
-  background: #FCFCFC;
-  background-size: 100%;
   color: #454545;
   text-align: center;
   overflow: scroll;
+  width: 100%;
 }
 
-#resume div {
+#resume-container{
+  background: #FCFCFC;
+  border: black 3px solid;
+  overflow: scroll;
+  margin: 5%;
+  padding: 2%;
+}
+
+#design {
+  width: 11%;
+  float: left;
+}
+
+#resume-info {
   text-align: left;
+  float: right;
+  overflow: scroll;
+  width: 88%;
+}
+
+#clear {
+  clear: both;
+  content: "";
+  display: block;
 }
 
 #projects {
   background-color: #E6E6E6;
   color: #454545;
   text-align: center;
+  width: 100%;
+  margin: 15% 0;
+  padding: 5% 0;
 }
 
 #tabs { 
@@ -145,23 +176,42 @@ a{
 
 .ui-widget-content{
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  font-size: .9em;
 }
 
 #preview{
-  max-width: 100%;
+  width: 40%;
+  float: left;
+}
+
+#descrip{
+  width: 55%;
+  float: right;
+  text-align: left;
+  padding: 3em 0 0;
+  font-size: .95em;
 }
 
 #contact {
   color: #fff;
   text-align: center;
+  margin: 15% 0;
+  width: 100%;
 }
 
 #contact-container {
   background: black;
   background-color: rgba(0,0,0,.6);
+  border-radius: 2em;
+  margin: auto;
+  width: 40%;
+  padding: 7em;
 }
 
 #contact p {
   font-style: italic;
+}
+
+.icon{
+  margin: 5% 2% 0 ;
+  width: 25%;
 }

@@ -19,5 +19,8 @@ $(document).ready(function(){
   });
 
   $( "#tabs" ).tabs();
+});
+
+$(window).load(function(){
   $('#resume-info').css("height", $('#design').height());
 });

@@ -159,11 +159,13 @@ a{
 
 #tabs .ui-tabs-nav .ui-state-default a { 
   color: #c0c0c0; 
+  outline-color:  #E6E6E6;
   font-size: .8em;
 } 
 
 #tabs .ui-tabs-nav .ui-state-active a { 
   color: #9E97C9; 
+  outline-color:  #E6E6E6;
   font-size: .8em;
 }
 

@@ -44,15 +44,15 @@
     }
 
     .dark {
-      --bg: #0a0a0a;
+      --bg: #1b1c20;
       --fg: #fafaf8;
       --subtle: #a3a3a3;
       --muted: #9ca3af;
-      --faint: #525252;
+      --faint: #72757b;
       --accent: #f59e0b;
-      --surface: #151514;
-      --border: #282825;
-      --nav-bg: rgba(17, 17, 17, 0.82);
+      --surface: #24272b;
+      --border: #36393f;
+      --nav-bg: rgba(28, 30, 34, 0.82);
       color-scheme: dark;
     }
 
@@ -491,7 +491,7 @@
       <div class="container hero-content">
         <div>
           <span class="note rise-in" style="animation-delay: 0.05s" aria-hidden="true">
-            hello, i'm 👋
+            👋 hello, i'm
             <svg width="34" height="26" viewBox="0 0 34 26"><path d="M2 6c10-4 22-2 26 12"/><path d="M23 14l5 5 3-7"/></svg>
           </span>
 
@@ -505,7 +505,7 @@
 
 
           <p class="hero-meta rise-in" style="animation-delay: 0.6s">
-            <span class="status-dot" aria-hidden="true"></span>east coast · <span id="clock">--:--</span>
+            <span class="status-dot" aria-hidden="true"></span>currently <span id="clock">--:--</span> here
           </p>
 
           <div class="hero-cta rise-in" style="animation-delay: 0.72s">
@@ -858,7 +858,7 @@
     // Live Eastern time clock
     (function () {
       var el = document.getElementById('clock');
-      var fmt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York', timeZoneName: 'short' });
+      var fmt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' });
       function tick() { el.textContent = fmt.format(new Date()).toLowerCase(); }
       tick();
       setInterval(tick, 15000);

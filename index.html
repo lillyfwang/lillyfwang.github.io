@@ -1,156 +1,904 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>Lilly F Wang</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css">
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/jquery-ui.min.js"></script>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lilly Wang</title>
+  <meta name="description" content="Lilly Wang — Staff Software Engineer at Meta, building AI agent and platform infrastructure." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23171717'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='34' fill='%23fafaf8'%3El%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    // Apply the saved theme before first paint so there's no flash.
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <body>
-    <div id="navBar">
-       <a id = "section" href="#welcome">Home</a>
-       <a id = "section" href="#about">About</a>
-       <a id = "section" href="#resume">R&eacute;sum&eacute;</a>
-       <a id = "section" href="#projects">Projects</a>
-       <a id = "section" href="#contact">Contact</a>
+    :root {
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --font-hand: 'Caveat', cursive;
+
+      --bg: #fafaf8;
+      --fg: #171717;
+      --subtle: #4b5563;
+      --muted: #6b7280;
+      --faint: #9ca3af;
+      --accent: #c26e38;
+      --surface: #f2f1ec;
+      --border: #dcd7ce;
+      --nav-bg: rgba(248, 248, 246, 0.82);
+
+      --radius: 16px;
+      --radius-full: 9999px;
+      color-scheme: light;
+    }
+
+    .dark {
+      --bg: #0a0a0a;
+      --fg: #fafaf8;
+      --subtle: #a3a3a3;
+      --muted: #9ca3af;
+      --faint: #525252;
+      --accent: #f59e0b;
+      --surface: #151514;
+      --border: #282825;
+      --nav-bg: rgba(17, 17, 17, 0.82);
+      color-scheme: dark;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+    /* Paper grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      z-index: 1000;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 500;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+    }
+    .navbar-inner {
+      max-width: 880px;
+      height: 56px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-name { font-weight: 600; font-size: 15px; letter-spacing: -0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--fg); background: var(--surface); }
+    .nav-sep { width: 1px; height: 16px; background: var(--border); margin: 0 6px; }
+
+    .theme-toggle {
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      border: none;
+      border-radius: var(--radius-full);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+    }
+    .theme-toggle:hover { color: var(--fg); background: var(--surface); }
+    .theme-toggle svg { width: 16px; height: 16px; }
+    .theme-toggle .moon, .dark .theme-toggle .sun { display: none; }
+    .dark .theme-toggle .moon { display: block; }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 500;
+      padding: 6px 8px;
+      background: var(--nav-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+    .mobile-nav-inner { display: flex; align-items: center; gap: 2px; }
+    .mobile-nav a { padding: 8px 11px; font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .mobile-nav a:hover { color: var(--fg); }
+
+    /* ── Layout ── */
+    main { padding-top: 56px; }
+    .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 72px 0; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: lowercase;
+      margin-bottom: 8px;
+    }
+    .section-label::before { content: '// '; color: var(--faint); }
+    .section-title {
+      font-size: clamp(26px, 4vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 16px;
+    }
+
+    /* Handwritten annotations */
+    .note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      font-family: var(--font-hand);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    .note svg { flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Hero ── */
+    .hero { position: relative; padding: 64px 0 56px; overflow: hidden; }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-name {
+      width: fit-content;
+      position: relative;
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin: 6px 0 16px;
+    }
+    .hero-name .word { display: inline-block; margin-right: 0.22em; white-space: nowrap; }
+    .hero-name .letter { display: inline-block; transition: transform 0.25s ease, color 0.25s ease; }
+    .hero-name .letter:hover { transform: translateY(-5px); color: var(--accent); }
+
+    .hero-subtitle { font-size: clamp(17px, 2.2vw, 20px); color: var(--subtle); max-width: 560px; line-height: 1.55; }
+    .hero-meta { font-family: var(--font-mono); font-size: 13px; color: var(--muted); margin: 16px 0 32px; }
+
+    .status-dot {
+      display: inline-block;
+      position: relative;
+      width: 7px; height: 7px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      vertical-align: 1px;
+    }
+    .status-dot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #10b981;
+      animation: ping 2s ease-in-out infinite;
+    }
+    @keyframes ping { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2.6); opacity: 0; } }
+
+    .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 36px; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      height: 44px;
+      padding: 0 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--bg);
+      background: var(--fg);
+      border-radius: var(--radius-full);
+      transition: transform 0.2s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.14); }
+    .link-underline { position: relative; font-size: 14px; color: var(--muted); transition: color 0.2s; }
+    .link-underline::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0; height: 1px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+    .link-underline:hover { color: var(--fg); }
+    .link-underline:hover::after { width: 100%; }
+
+    .stack-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .stack-label { font-family: var(--font-mono); font-size: 12px; color: var(--faint); margin-right: 4px; }
+    .chip {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      transition: color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .chip:hover { color: var(--fg); border-color: var(--accent); transform: translateY(-2px); }
+
+    /* Portrait */
+    .portrait-wrap { position: relative; }
+    .portrait {
+      width: 200px; height: 200px;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      transform: rotate(2.5deg);
+      transition: transform 0.4s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .portrait:hover { transform: rotate(-1deg) scale(1.03); }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .portrait-wrap .note { position: absolute; top: -34px; right: -24px; }
+    .doodle { position: absolute; color: var(--accent); pointer-events: none; animation: float 6s ease-in-out infinite; }
+    .doodle-1 { bottom: -14px; left: -18px; font-size: 22px; }
+    .doodle-2 { top: 40%; right: -26px; font-size: 18px; animation-delay: -3s; color: var(--faint); }
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-8px) rotate(12deg); } }
+
+    .rise-in { opacity: 0; transform: translateY(14px); animation: riseIn 0.55s ease forwards; }
+    @keyframes riseIn { to { opacity: 1; transform: none; } }
+
+    /* ── Stats ── */
+    .stats { padding: 24px 0 32px; }
+    .stats-grid {
+      position: relative;
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-auto-flow: column;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat { padding: 26px 20px; }
+    .stat + .stat { border-left: 1px solid var(--border); }
+    .stat-value { font-size: 28px; font-weight: 700; letter-spacing: -0.03em; }
+    .stat-label { font-size: 13px; color: var(--muted); }
+    .stats-grid .note { position: absolute; right: 0; bottom: -40px; transform: rotate(-3deg); }
+
+    /* ── About bento ── */
+    .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .card {
+      position: relative;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-3px); background: var(--surface); }
+    .card.span-2 { grid-column: span 2; }
+    .card-icon { font-size: 20px; margin-bottom: 14px; }
+    .card-label { font-family: var(--font-mono); font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+    .card-value { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .card-desc { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+    /* ── Experience ── */
+    .exp-list { border-top: 1px solid var(--border); }
+    .exp-item { border-bottom: 1px solid var(--border); }
+    .exp-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 4px;
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .exp-logo {
+      position: relative;
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .exp-info { flex: 1; min-width: 0; }
+    .exp-company, .exp-role { display: block; }
+    .exp-company { font-weight: 600; font-size: 15px; }
+    .exp-role { font-size: 14px; color: var(--muted); }
+    .exp-dates { font-family: var(--font-mono); font-size: 12px; color: var(--faint); white-space: nowrap; }
+    .exp-chevron { width: 16px; height: 16px; color: var(--faint); transition: transform 0.3s ease; flex-shrink: 0; }
+    .exp-item.open .exp-chevron { transform: rotate(180deg); }
+    .exp-details { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease; }
+    .exp-item.open .exp-details { grid-template-rows: 1fr; }
+    .exp-details > div { overflow: hidden; }
+    .exp-details ul { list-style: none; padding: 0 4px 20px 60px; }
+    .exp-details li { position: relative; font-size: 14px; color: var(--subtle); margin-bottom: 6px; }
+    .exp-details li::before { content: '→'; position: absolute; left: -20px; color: var(--accent); }
+    .exp-details a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border); }
+
+    /* ── Article cards ── */
+    .project-title { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-weight: 600; margin-bottom: 4px; }
+    .project-title .arrow { color: var(--faint); transition: transform 0.2s, color 0.2s; }
+    .article:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
+
+
+    /* ── Articles ── */
+    .articles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .article { display: flex; flex-direction: column; gap: 10px; }
+    .article .project-title { font-size: 16px; line-height: 1.35; margin: 0; }
+    .article-meta { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--faint); text-transform: lowercase; }
+    .article-meta span:first-child { color: var(--accent); }
+    .article-team { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--border); font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+    .exp-desc { padding: 0 4px 10px 60px; font-size: 14px; color: var(--muted); }
+    .name-note { position: absolute; top: -18px; left: 100%; margin-left: -4px; font-size: 20px; transform: rotate(-6deg); letter-spacing: 0; line-height: 1; }
+
+    /* ── Off the clock ── */
+    .life { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .life-card { text-align: left; }
+    .life-emoji { font-size: 30px; margin-bottom: 14px; display: inline-block; transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1); }
+    .life-card .card-value:has(ruby) { margin-top: -16px; }
+    .life-card ruby { font-size: 24px; font-weight: 600; letter-spacing: 0.08em; ruby-position: over; }
+    .life-card rt { font-family: var(--font-sans); font-size: 11px; font-weight: 500; color: var(--accent); letter-spacing: 0; padding-bottom: 3px; }
+    .life-card:hover .life-emoji { transform: rotate(-12deg) scale(1.15); }
+
+    /* ── Connect ── */
+    .connect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .connect-link { display: flex; align-items: center; gap: 14px; padding: 16px 18px; }
+    .connect-link svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--muted); }
+    .connect-link .label { font-weight: 600; font-size: 14px; }
+    .connect-link .handle { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+    .connect-link .arrow { margin-left: auto; color: var(--faint); transition: transform 0.2s, color 0.2s; }
+    .connect-link:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
+
+    footer { padding: 40px 0 56px; border-top: 1px solid var(--border); }
+    footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-family: var(--font-mono); font-size: 12px; color: var(--faint); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; transition-delay: calc(var(--i, 0) * 70ms); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .rise-in, .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 760px) {
+      .nav-links a { display: none; }
+      .nav-links .nav-sep { display: none; }
+      .mobile-nav { display: block; }
+      footer { padding-bottom: 96px; }
+      section { padding: 56px 0; }
+      .hero { padding-top: 44px; }
+      .hero-content { grid-template-columns: 1fr; gap: 40px; }
+      .portrait-wrap { order: -1; justify-self: start; margin-top: 24px; }
+      .portrait { width: 132px; height: 132px; border-radius: 22px; }
+      .portrait-wrap .note { top: -22px; right: auto; left: 150px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); grid-auto-flow: row; }
+      .stat:nth-child(3) { border-left: none; }
+      .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
+      .bento, .articles, .connect-grid { grid-template-columns: 1fr; }
+      .life { grid-template-columns: repeat(2, 1fr); }
+      .name-note { display: none; }
+      .exp-desc { padding-left: 44px; }
+      .card.span-2 { grid-column: auto; }
+      .exp-dates { display: none; }
+      .exp-role .m-dates { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--faint); }
+      .exp-details ul { padding-left: 44px; }
+    }
+    @media (min-width: 761px) { .m-dates { display: none; } }
+  </style>
+</head>
+
+<body>
+  <div id="scroll-progress"></div>
+
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a href="#top" class="nav-name">lilly wang</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">about</a>
+        <a href="#experience">experience</a>
+        <a href="#work">work</a>
+        <a href="#connect">connect</a>
+        <span class="nav-sep"></span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </nav>
     </div>
-    <!-- WELCOME -->
-    <div id="welcome">
-      <div id="welcome-container">
-      <div id="welcome-name"><h2>L I L L Y . F . W A N G</h2></div>
-      <p>Personal Portfolio</p>
-      </div>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Sections">
+    <div class="mobile-nav-inner">
+      <a href="#about">about</a>
+      <a href="#experience">experience</a>
+      <a href="#work">work</a>
+      <a href="#connect">connect</a>
     </div>
-    <!-- ABOUT -->
-    <div id="about">
-      <div id="about-info">
-      <h2>A B O U T . M E</h2>
-      <p>I am a Junior studying Computer Science and Psychology at Columbia University's Fu Foundation School of Engineering and Applied Sciences. This personal website is all about showcasing some of thing things I have accomplished in my 20 short years of life so far. It is also something I redesign for fun in my free time, and it reflects my interest in graphic and web design. </p>
-      </div>
-    </div>
-    <!--Resume -->
-    <div id="resume">
-      <div id="resume-container">
-        <img id="design" src="assets/images/ResumeBord.png" />
-        <div id="resume-info">
-          <h2>R &Eacute; S U M &Eacute;</h2>
-          <p>
-          <span>Software Engineering Intern</span><br>
-          <em>Facebook  - Menlo Park, CA<br></em>
-          Summer 2015. iOS Interfaces Team<br><br>
-          <span>Teaching Assistant</span><br>
-          <em>Columbia University  - New York, NY<br></em>
-          Spring 2015. COMS W3101 - Python<br><br>
-          <span>Girls Coding Club Instructor</span><br>
-          <em>Booker T Washington Middle School  - New York, NY<br></em>
-          Spring 2015.<br><br>
-          <span>Software Engineer</span><br>
-          <em><a href="http://www.closetcollective.com/" target="_blank">Closet Collective</a>  - New York, NY<br></em>
-          Summer 2014. Adapt ecommerce platform (Shopify) to support a growing customer base with the launch of a new subscription service; use data and algorithms to customize Closet Collective's user experience; redesign website for friendly and easy user interaction (e.g. social media integration)<br><br>
-          <span>Executive Board</span><br>
-          <em>Engineers Without Borders (Columbia University) - New York, NY<br></em>
-          2014, 2015. Webmaster, created <a href="http://cuewb.org/" target="_blank">homepage</a> for Columbia's Engineers Without Borders Chapter.<br><br>
-          <span>Admissions Office Intern</span><br>
-          <em>Columbia University - New York, NY<br></em>
-          Spring 2014, Spring 2015. Work with Admissions Officers at Columbia; serve as recruitment coordinator (2014) and engineering coordinator (2013) on advisory board of a student group on campus run by Admissions (Undergraduate Recruitment Committee); plan admitted students weekend; give campus tours; interview high school applicants of Columbia.<br><br>
-          <span>Programming Languages</span><br>
-          Proficient: Java, MatLab, HTML, CSS, JavaScript, Git<br>
-          Learning: Objective C, Python, C/C++
+  </nav>
+
+  <main id="top">
+    <!-- ═════════ HERO ═════════ -->
+    <section class="hero" aria-label="Introduction">
+      <div class="container hero-content">
+        <div>
+          <span class="note rise-in" style="animation-delay: 0.05s" aria-hidden="true">
+            hello, i'm 👋
+            <svg width="34" height="26" viewBox="0 0 34 26"><path d="M2 6c10-4 22-2 26 12"/><path d="M23 14l5 5 3-7"/></svg>
+          </span>
+
+          <h1 class="hero-name" aria-label="Lilly Wang" data-name="lilly wang">
+            <span class="note name-note rise-in" style="animation-delay: 1.2s" aria-hidden="true">staff swe @ meta</span>
+          </h1>
+
+          <p class="hero-subtitle rise-in" style="animation-delay: 0.5s">
+            Platform &amp; infrastructure engineer. I build the systems other engineers (and now AI agents) build on, currently the code-execution infrastructure behind Meta's AI coding agents.
           </p>
-        </div>
-        <div id="clear"></div>
-      </div>
-    </div>
-    <!-- Projects -->
-    <div id="projects">
-      <h2>P R O J E C T S</h2>
-      A small gallery of Computer Science projects I have completed. <br><br></p>
-      <div id="tabs">
-        <ul>
-          <li><a href="#ss">SS</a></li>
-          <li><a href="#bc">BC</a></li>
-          <li><a href="#pw">PW</a></li>
-          <li><a href="#kk">KK</a></li>
-          <li><a href="#ff">FF</a></li>
-        </ul>
-        <!-- SSB -->
-        <div id="ss">
-          <img id="preview" src="assets/images/SSB.jpg">
-          <div id="descrip"> <br>
-            <a href="http://lillyfwang.github.io/super-smash-bros/" target="_blank"><span>Super Smash Brothers</span></a><br>
-            <em>Java</em><br>
-            PC adaptation of Nintendo's Super Smash Brothers using the Ucigame Java graphics package to animate characters.
-          </div>
-        </div>
-        <!-- Binomial -->
-        <div id="bc">
-          <img id="preview" src="assets/images/BC.png">
-          <div id="descrip"> <br>
-            <a href="http://lillyfwang.github.io/binomial-calculator/" target="_blank"><span>Binomial Calculator</span></a><br>
-            <em>Java</em><br>
-            An efficient application designed to evaluate mathematical expressions using various data structures such as binary search trees and stacks.
-          </div>
-        </div>
-        <!-- Website -->
-        <div id="pw">
-          <img id="preview" src="assets/images/Website.png">
-          <div id="descrip">
-            <span>Personal Website</span><br>
-            <em>HTML/CSS, JavaScript</em> <br>
-            Reflects the most recent web design technologies I teach myself, a place to apply new skills as I learn them.
-          </div>
-        </div>
-        <!--Kookopa-->
-        <div id="kk">
-          <img id="preview" src="assets/images/KookopaLogin.png">
-          <div id="descrip">
-            <a href="http://www.closetcollective.com" target="_blank"><span>Closet Collective</span><br></a>
-            <em>HTML/CSS, JavaScript, Liquid</em> <br>
-            Adapt ecommerce platform (Shopify) to support a growing customer base with the launch of a new subscription service; use data and algorithms to customize Kookopa’s user experience; redesign website for friendly and easy user interaction (e.g. social media integration)
-          </div>
-        </div>
-        <!-- $avr -->
-        <div id="ff">
-          <img id="preview" src="assets/images/flickfind.png">
-          <div id="descrip">
-          <a href="http://lillyfwang.com/flickfind" target="_blank"><span>Flick Find</span><br></a>
-            <em>HTML/CSS, JavaScript</em><br>
-            A web application that allows users to refine a search in the Flickr database by specifying tags, usernames, and dates using Flickr's API. Implements responsive designs and utilizes HTML5/CSS3.
-          </div>
-        </div>
-      </div>
-      <div id="clear"></div>
-    </div>
-      
-      
-      
-    <!-- CONTACT -->
-    <div id="contact">
-      <div id="welcome-container">
-      <div id="welcome-name"><h2>C O N T A C T . M E</h2></div>
-      <!-- LinkedIn Account -->
-      <a href="http://www.linkedin.com/in/lillyfwang" target="_blank">
-      <span id="icon" class="fa fa-linkedin-square fa-4x"></span>
-      </a>
-      <!-- Facebook Account -->
-      <a href="https://www.facebook.com/lilly.f.wang" target="_blank">
-      <span id="icon" class="fa fa-facebook-square fa-4x"></span>
-      </a> 
-      <!-- GitHub Account -->
-      <a href="https://github.com/lillyfwang" target="_blank">
-      <span id="icon" class="fa fa-github-square fa-4x"></span>
-      </a>
-      </div>
-    </div>
-  </body>
-</html>
 
-<!--
-CREDITS/THANK YOU:
-SOCIAL MEDIA ICONS: VERVEX ==> http://vervex.deviantart.com/art/Somacro-40-300DPI-Social-Media-Icons-267955425,
-SKELJS: Adam Jensen ==> https://github.com/n33/skelJS
- -->
+
+          <p class="hero-meta rise-in" style="animation-delay: 0.6s">
+            <span class="status-dot" aria-hidden="true"></span>east coast · <span id="clock">--:--</span>
+          </p>
+
+          <div class="hero-cta rise-in" style="animation-delay: 0.72s">
+            <a class="btn-primary" href="mailto:lillyfwang@gmail.com">say hello 👋</a>
+            <a class="link-underline" href="https://lillyf.wang">lillyf.wang</a>
+          </div>
+
+          <div class="stack-row rise-in" style="animation-delay: 0.85s">
+            <span class="stack-label">i work on</span>
+            <span class="chip">AI agent infra</span>
+            <span class="chip">sandboxed execution</span>
+            <span class="chip">distributed systems</span>
+            <span class="chip">developer platforms</span>
+          </div>
+        </div>
+
+        <div class="portrait-wrap rise-in" style="animation-delay: 0.35s">
+          <span class="note" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 30 30"><path d="M26 4C14 4 6 10 5 24"/><path d="M1 19l4 6 6-4"/></svg>
+            that's me
+          </span>
+          <div class="portrait">
+            <img src="assets/images/headshot.jpg" alt="Lilly Wang" width="400" height="400" fetchpriority="high" />
+          </div>
+          <span class="doodle doodle-1" aria-hidden="true">✦</span>
+          <span class="doodle doodle-2" aria-hidden="true">+</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ STATS ═════════ -->
+    <div class="stats">
+      <div class="container">
+        <div class="stats-grid reveal">
+          <div class="stat"><div class="stat-value">10 yrs</div><div class="stat-label">at Facebook, Instagram and Meta</div></div>
+          <div class="stat"><div class="stat-value">CU ♔</div><div class="stat-label">Engineering, CS major, Psych minor</div></div>
+          <div class="stat"><div class="stat-value">5 / 7</div><div class="stat-label">continents visited, and counting</div></div>
+          <div class="stat"><div class="stat-value">MDW ✈︎</div><div class="stat-label">midwest raised, east coast based</div></div>
+          <span class="note" aria-hidden="true">a little about me</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════════ ABOUT ═════════ -->
+    <section id="about">
+      <div class="container">
+        <p class="section-label reveal">about</p>
+        <h2 class="section-title reveal">
+          the short version
+          <span class="note" aria-hidden="true">
+            <svg width="30" height="20" viewBox="0 0 30 20"><path d="M28 4C20 2 10 4 4 14"/><path d="M2 8l2 7 7-2"/></svg>
+            tl;dr
+          </span>
+        </h2>
+
+        <div class="bento">
+          <div class="card span-2 reveal" style="--i: 0">
+            <div class="card-icon">🤖</div>
+            <div class="card-label">current role</div>
+            <div class="card-value">Infra Tech Lead, Interactive Compute &amp; AI Agent Infrastructure</div>
+            <div class="card-desc">I lead the infrastructure side of Meta's notebooks, sandboxed environments and AI coding agents: server architecture, deployment pipelines, kernel management, and the protocol agents use to call tools.</div>
+          </div>
+          <div class="card reveal" style="--i: 1">
+            <div class="card-icon">📍</div>
+            <div class="card-label">time zone</div>
+            <div class="card-value">Eastern Time</div>
+            <div class="card-desc">East Coast based, remote-friendly.</div>
+          </div>
+          <div class="card reveal" style="--i: 2">
+            <div class="card-icon">🎓</div>
+            <div class="card-label">education</div>
+            <div class="card-value">Columbia University</div>
+            <div class="card-desc">B.S. Computer Science, minor in Psychology.</div>
+          </div>
+          <div class="card span-2 reveal" style="--i: 3">
+            <div class="card-icon">🧱</div>
+            <div class="card-label">what i like building</div>
+            <div class="card-value">The layer everyone else stands on</div>
+            <div class="card-desc">GraphQL client infra, a server-driven UI framework, an ML training platform, and now agent infrastructure. I've spent my career on the foundations product teams depend on, and on making them faster, cheaper and harder to break.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ EXPERIENCE ═════════ -->
+    <section id="experience">
+      <div class="container">
+        <p class="section-label reveal">experience</p>
+        <h2 class="section-title reveal">
+          where i've been
+          <span class="note" aria-hidden="true">click to expand ↓</span>
+        </h2>
+
+        <div class="exp-list reveal">
+          <div class="exp-item open">
+            <button class="exp-header" type="button" aria-expanded="true">
+              <span class="exp-logo">ai</span>
+              <span class="exp-info">
+                <span class="exp-company">Meta · Interactive Compute &amp; AI Agent Infrastructure</span>
+                <span class="exp-role">Infrastructure Tech Lead<span class="m-dates">nov 2024 – now</span></span>
+              </span>
+              <span class="exp-dates">nov 2024 – now</span>
+              <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exp-details"><div>
+              <p class="exp-desc">The infrastructure behind Meta's notebooks and sandboxed environments, which is also where Meta's AI coding agents run their code.</p>
+              <ul>
+                <li>Designed how AI agents call tools and run code on remote machines.</li>
+                <li>Lead the infrastructure side of the team: servers, deployments and keeping things up.</li>
+              </ul>
+            </div></div>
+          </div>
+
+          <div class="exp-item">
+            <button class="exp-header" type="button" aria-expanded="false">
+              <span class="exp-logo">lp</span>
+              <span class="exp-info">
+                <span class="exp-company">Meta · Looper</span>
+                <span class="exp-role">Tech Lead, ML platform<span class="m-dates">jul 2023 – nov 2024</span></span>
+              </span>
+              <span class="exp-dates">jul 2023 – nov 2024</span>
+              <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exp-details"><div>
+              <p class="exp-desc">A platform that lets product teams train, tune and ship ML models without needing to be ML experts.</p>
+              <ul>
+                <li>Moved teams onto a modernized training stack.</li>
+                <li>Spent a lot of time on hyperparameter tuning and experimentation tooling.</li>
+              </ul>
+            </div></div>
+          </div>
+
+          <div class="exp-item">
+            <button class="exp-header" type="button" aria-expanded="false">
+              <span class="exp-logo">ig</span>
+              <span class="exp-info">
+                <span class="exp-company">Instagram · Equity &amp; Transparency</span>
+                <span class="exp-role">Product Platform Tech Lead<span class="m-dates">jun 2021 – aug 2023</span></span>
+              </span>
+              <span class="exp-dates">jun 2021 – aug 2023</span>
+              <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exp-details"><div>
+              <p class="exp-desc">Products about representation and fairness on Instagram, like helping people find and support underrepresented communities and businesses.</p>
+              <ul>
+                <li>Took a community discovery feature from an early idea to launch.</li>
+                <li>Built internal tools to help partner teams debug.</li>
+              </ul>
+            </div></div>
+          </div>
+
+          <div class="exp-item">
+            <button class="exp-header" type="button" aria-expanded="false">
+              <span class="exp-logo">ig</span>
+              <span class="exp-info">
+                <span class="exp-company">Instagram · Bloks</span>
+                <span class="exp-role">Server Lead, server-driven UI framework<span class="m-dates">feb 2020 – jun 2021</span></span>
+              </span>
+              <span class="exp-dates">feb 2020 – jun 2021</span>
+              <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exp-details"><div>
+              <p class="exp-desc">Instagram's server-driven UI framework. The server describes the screen and the app draws it, so features can change without an app update.</p>
+              <ul>
+                <li>Owned the server side of the framework.</li>
+                <li>Worked on making it faster and harder to break.</li>
+              </ul>
+            </div></div>
+          </div>
+
+          <div class="exp-item">
+            <button class="exp-header" type="button" aria-expanded="false">
+              <span class="exp-logo">ig</span>
+              <span class="exp-info">
+                <span class="exp-company">Instagram · Shopping</span>
+                <span class="exp-role">Server / Platform Engineer<span class="m-dates">jan 2019 – jan 2020</span></span>
+              </span>
+              <span class="exp-dates">jan 2019 – jan 2020</span>
+              <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exp-details"><div>
+              <p class="exp-desc">The backend for Instagram Shopping: product catalogs, tagging, shops on profiles and tools for sellers.</p>
+              <ul>
+                <li>Built product launches ("drops") with reminders, end to end.</li>
+                <li>Worked on product search and sorting and filtering in profile shops.</li>
+              </ul>
+            </div></div>
+          </div>
+
+          <div class="exp-item">
+            <button class="exp-header" type="button" aria-expanded="false">
+              <span class="exp-logo">f</span>
+              <span class="exp-info">
+                <span class="exp-company">Facebook · GraphQL Client Infrastructure</span>
+                <span class="exp-role">iOS / C++ Cross-Platform Engineer<span class="m-dates">jul 2016 – jan 2019</span></span>
+              </span>
+              <span class="exp-dates">jul 2016 – jan 2019</span>
+              <svg class="exp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="exp-details"><div>
+              <p class="exp-desc">The GraphQL networking and data layer inside Facebook's iOS and Android apps.</p>
+              <ul>
+                <li>Built a pagination framework that product teams across the company adopted.</li>
+                <li>Helped build a new GraphQL networking stack from scratch.</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ PRESS ═════════ -->
+    <section id="work">
+      <div class="container">
+        <p class="section-label reveal">in the wild</p>
+        <h2 class="section-title reveal">
+          things i've worked on
+          <span class="note" aria-hidden="true">as seen on the internet</span>
+        </h2>
+
+        <div class="articles">
+          <a class="card article reveal" style="--i: 0" href="https://ai.meta.com/blog/looper-meta-ai-optimization-platform-for-engineers/" target="_blank" rel="noopener">
+            <div class="article-meta"><span>meta ai blog</span><span>apr 2022</span></div>
+            <div class="project-title">Inside Meta's AI optimization platform for engineers across the company <span class="arrow">↗</span></div>
+            <div class="card-desc">Looper, the end-to-end platform that lets product engineers train and deploy models without ML expertise. I was its tech lead from 2023 to 2024.</div>
+            <div class="article-team">team · Looper</div>
+          </a>
+          <a class="card article reveal" style="--i: 1" href="https://techcrunch.com/2021/05/11/instagram-adds-a-dedicated-spot-for-your-pronouns/" target="_blank" rel="noopener">
+            <div class="article-meta"><span>techcrunch</span><span>may 2021</span></div>
+            <div class="project-title">Instagram adds a dedicated spot for your pronouns <span class="arrow">↗</span></div>
+            <div class="card-desc">A pronouns field on Instagram profiles, so people can share up to four pronouns without giving up space in their bio.</div>
+            <div class="article-team">team · Instagram</div>
+          </a>
+          <a class="card article reveal" style="--i: 2" href="https://about.instagram.com/blog/announcements/updates-on-our-equity-work" target="_blank" rel="noopener">
+            <div class="article-meta"><span>instagram blog</span><span>sep 2020</span></div>
+            <div class="project-title">An update on our equity work <span class="arrow">↗</span></div>
+            <div class="card-desc">Instagram's announcement of its Equity team and its work on fairness and content-distribution transparency, the team I later tech-led.</div>
+            <div class="article-team">team · Equity &amp; Transparency</div>
+          </a>
+          <a class="card article reveal" style="--i: 3" href="https://web.archive.org/web/20250122001500/https://business.instagram.com/blog/new-testing-product-launches-for-instagram-shopping" target="_blank" rel="noopener">
+            <div class="article-meta"><span>instagram for business</span><span>oct 2019</span></div>
+            <div class="project-title">Set reminders for upcoming product launches on Instagram Shopping <span class="arrow">↗</span></div>
+            <div class="card-desc">Launch stickers and reminders that let shoppers get notified before a product drops. I built this one end to end.</div>
+            <div class="article-team">team · Instagram Shopping</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ OFF THE CLOCK ═════════ -->
+    <section id="life">
+      <div class="container">
+        <p class="section-label reveal">off the clock</p>
+        <h2 class="section-title reveal">
+          when i'm not at a keyboard
+          <span class="note" aria-hidden="true">the fun part</span>
+        </h2>
+        <div class="life">
+          <div class="card life-card reveal" style="--i: 0">
+            <div class="life-emoji">🐶</div>
+            <div class="card-value">dog parent</div>
+            <div class="card-desc">The real boss of the house.</div>
+          </div>
+          <div class="card life-card reveal" style="--i: 1">
+            <div class="life-emoji">🤿</div>
+            <div class="card-value">scuba</div>
+            <div class="card-desc">Adventure certified.</div>
+          </div>
+          <div class="card life-card reveal" style="--i: 2">
+            <div class="life-emoji">🃏</div>
+            <div class="card-value"><ruby lang="zh">掼<rt>guàn</rt>蛋<rt>dàn</rt></ruby></div>
+            <div class="card-desc">Mahjong too. Always down for a game.</div>
+          </div>
+          <div class="card life-card reveal" style="--i: 3">
+            <div class="life-emoji">🧵</div>
+            <div class="card-value">learning to sew</div>
+            <div class="card-desc">Next on the list.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ CONNECT ═════════ -->
+    <section id="connect">
+      <div class="container">
+        <p class="section-label reveal">connect</p>
+        <h2 class="section-title reveal">
+          let's talk
+          <span class="note" aria-hidden="true">
+            <svg width="40" height="24" viewBox="0 0 40 24"><path d="M38 6C28 2 14 4 6 16"/><path d="M3 10l3 7 7-2"/></svg>
+            my inbox is open
+          </span>
+        </h2>
+
+        <div class="connect-grid">
+          <a class="card connect-link reveal" style="--i: 0" href="mailto:lillyfwang@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+            <span><span class="label">Email</span><br><span class="handle">lillyfwang@gmail.com</span></span>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="card connect-link reveal" style="--i: 1" href="https://www.linkedin.com/in/lillyfwang" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            <span><span class="label">LinkedIn</span><br><span class="handle">in/lillyfwang</span></span>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="card connect-link reveal" style="--i: 2" href="https://github.com/lillyfwang" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.6.2 2.9.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>
+            <span><span class="label">GitHub</span><br><span class="handle">@lillyfwang</span></span>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> lilly f wang</span>
+    </div>
+  </footer>
+
+  <script>
+    // Split the name into letters that rise in one by one.
+    (function () {
+      var h1 = document.querySelector('.hero-name');
+      var delay = 0.1;
+      h1.dataset.name.split(' ').forEach(function (word) {
+        var w = document.createElement('span');
+        w.className = 'word';
+        w.setAttribute('aria-hidden', 'true');
+        word.split('').forEach(function (ch) {
+          var l = document.createElement('span');
+          l.className = 'letter rise-in';
+          l.style.animationDelay = delay.toFixed(2) + 's';
+          l.textContent = ch;
+          w.appendChild(l);
+          delay += 0.04;
+        });
+        h1.appendChild(w);
+        delay += 0.04;
+      });
+    })();
+
+    // Theme toggle
+    document.querySelector('.theme-toggle').addEventListener('click', function () {
+      var dark = document.documentElement.classList.toggle('dark');
+      try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    });
+
+    // Live Eastern time clock
+    (function () {
+      var el = document.getElementById('clock');
+      var fmt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York', timeZoneName: 'short' });
+      function tick() { el.textContent = fmt.format(new Date()).toLowerCase(); }
+      tick();
+      setInterval(tick, 15000);
+    })();
+
+    // Scroll progress bar
+    (function () {
+      var bar = document.getElementById('scroll-progress');
+      function update() {
+        var max = document.documentElement.scrollHeight - innerHeight;
+        bar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+      }
+      addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+
+    // Reveal on scroll
+    (function () {
+      var items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(function (el) { io.observe(el); });
+    })();
+
+    // Experience accordion
+    document.querySelectorAll('.exp-header').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.parentElement.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
